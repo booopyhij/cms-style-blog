@@ -50,12 +50,6 @@ router.delete("/:id", withAuth, async (req, res) => {
     const commentData = await Comment.destroy({
       where: { id: req.params.id },
     });
-    if (!commentData) {
-      res
-        .status(404)
-        .json({ message: "Cannot delete comment." });
-      return;
-    }
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
