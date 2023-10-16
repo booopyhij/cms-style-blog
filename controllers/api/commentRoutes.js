@@ -10,6 +10,7 @@ router.get("/", async (req, res) => {
     res.json(commentData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
@@ -22,6 +23,7 @@ router.get("/:id", async (req, res) => {
     res.json(commentData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
@@ -36,6 +38,7 @@ router.post("/", withAuth, async (req, res) => {
     res.json(commmentData);
   } catch (err) {
     res.status(400).json(err);
+    console.log(err);
   }
 });
 
@@ -48,11 +51,12 @@ router.delete("/:id", withAuth, async (req, res) => {
     if (!commentData) {
       res
         .status(404)
-        .json({ message: "Cannot delete comment or no comment found." });
+        .json({ message: "Cannot delete comment." });
       return;
     }
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
