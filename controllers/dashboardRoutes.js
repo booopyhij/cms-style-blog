@@ -37,7 +37,7 @@ router.get("/", withAuth, async (req, res) => {
       posts,
       logged_in: true,
     });
-    //catch error and return status 500
+    //catch error and return status 500 and console logs it
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
@@ -73,6 +73,7 @@ router.get("edit/:Id", withAuth, async (req, res) => {
         },
       ],
     });
+    // throw error if not postdata
     if (!postData) {
       res.status(404).json({ message: "No posts found." });
       return;
