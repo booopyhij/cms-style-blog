@@ -4,7 +4,7 @@ const sequelize = require("../../config/connection");
 const withAuth = require("../../utils/auth");
 
 
-//get all posts by user
+//get all posts by a user if logged in
 router.get("/", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -26,6 +26,7 @@ router.get("/", withAuth, async (req, res) => {
         },
       ],
     });
+     // converting post data to json
     res.json(postData);
   } catch (err) {
     res.status(500).json(err);
@@ -33,7 +34,7 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-//get one post by user
+//get one post by one user
 router.get("/:id", async (req, res) => {
   try {
     const postData = await Post.findOne({
@@ -58,6 +59,7 @@ router.get("/:id", async (req, res) => {
       res.status(404).json({ message: "Post not found." });
       return;
     }
+     // converting post data to json
     res.json(postData);
   } catch (err) {
     res.status(500).json(err);
@@ -74,6 +76,7 @@ router.post("/", withAuth, async (req, res) => {
       post_content: req.body.post_content,
       user_id: req.session.user_id,
     });
+     // converting post data to json
     res.json(postData);
   } catch (err) {
     res.status(500).json(err);
@@ -98,7 +101,7 @@ router.put("/:id", withAuth, async (req, res) => {
       res.status(404).json({ message: "Post not found." });
       return;
     }
-
+ // converting post data to json
     res.json({ message: "Post updated!" });
   } catch (err) {
     res.status(500).json(err);
@@ -109,6 +112,7 @@ router.put("/:id", withAuth, async (req, res) => {
 //delete post if user is logged in
 router.delete("/:id", withAuth, async (req, res) => {
   try {
+    // destroy will permanently delete information out of the sequel DB
     const postData = await Post.destroy({
       where: { id: req.params.id },
     });
