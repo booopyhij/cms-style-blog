@@ -2,9 +2,10 @@
     <a href="/dashboard/create/"><button id="create-post">create a new post</button></a>
 
     <h2>Dashboard: Your Posts</h2><hr>
+    {{!-- if statement --}}
     {{#if posts.length}}
 </div>
-
+{{!-- for each loop, looping through all posts and displaying them on the dashboard --}}
 {{#each posts as |post|}}
     {{> postInfo post}}
 

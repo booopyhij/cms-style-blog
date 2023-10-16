@@ -9,6 +9,7 @@
 <header>
     <h1>Blog</h1>
     <nav>
+        {{!-- if statement to check authentication --}}
      {{#if logged_in}}
      <a href="/">Homepage</a>
      <a href="/dashboard">Dashboard</a>
@@ -23,6 +24,7 @@
     
   
     <main>
+        {{!-- pulls the body of the application --}}
         {{{body}}}
     </main>
 
