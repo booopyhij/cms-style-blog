@@ -96,11 +96,7 @@ router.put("/:id", withAuth, async (req, res) => {
         where: { id: req.params.id },
       }
     );
-    //if no post by that id then throw error message
-    if (!postData) {
-      res.status(404).json({ message: "Post not found." });
-      return;
-    }
+ 
  // converting post data to json
     res.json({ message: "Post updated!" });
   } catch (err) {
@@ -116,14 +112,6 @@ router.delete("/:id", withAuth, async (req, res) => {
     const postData = await Post.destroy({
       where: { id: req.params.id },
     });
-    //if no post with id is found display error
-    if (!postData) {
-      res
-        .status(404)
-        .json({ message: "Could not delete post." });
-      return;
-    }
-
     res.json({ message: "Post deleted!" });
   } catch (err) {
     res.status(500).json(err);

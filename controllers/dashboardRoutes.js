@@ -73,11 +73,6 @@ router.get("edit/:Id", withAuth, async (req, res) => {
         },
       ],
     });
-    // throw error if not postdata
-    if (!postData) {
-      res.status(404).json({ message: "No posts found." });
-      return;
-    }
 
     const post = postData.get({ plain: true });
     //render handlebars for edit post

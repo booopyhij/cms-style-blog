@@ -92,10 +92,7 @@ router.get("/post/:id", async (req, res) => {
         },
       ],
     });
-    //if no posts found throw error
-    if (!postData) {
-      return res.status(404).json({ error: "Post not found" });
-    }
+ 
 
     const post = this.postData.get({ plain: true });
     //render handlebars post
