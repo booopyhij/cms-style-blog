@@ -1,6 +1,6 @@
 <!--pull in posts-->
 {{> postInfo posts}}
-
+{{!-- if statement to check login authentication --}}
 {{#if logged_In}}
 <form class="'comment-form">
     <div>
@@ -15,5 +15,6 @@
 {{> comments post.comments}}
 
 {{#if logged_In}}
+{{!-- comment logic from comment.js frontend script --}}
 <script src="/public/js/comment.js"></script>
 {{/if}}

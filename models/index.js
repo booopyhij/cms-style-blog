@@ -2,31 +2,35 @@ const Post = require("./Post");
 const Comment = require("./Comment");
 const User = require("./User");
 
-//user can make many posts (one to many)
+// creates the relationships between the different models. allowing for the table to interact with eachother and pull 
+// data from multiple tables together
+
+
+//one user can make many posts
 User.hasMany(Post, {
   foreignKey: "user_id",
 });
-//user can make many comments (one to many)
+//one user can make many comments
 User.hasMany(Comment, {
   foreignKey: "user_id",
 });
 
-//post belongs to user (many to one)
+//many posts can belong to one user
 Post.belongsTo(User, {
   foriegnKey: "user_id",
 });
 
-//post can have many comments (many to one)
+//there can be many comments on a single post
 Post.hasMany(Comment, {
   foreignKey: "post_id",
   onDelete: "CASCADE",
 });
 
-//comment belongs to user (many to one)
+//many comments can be made by one user
 Comment.belongsTo(User, {
   foreignKey: "user_id",
 }),
-  //comments under a post (many to one)
+  
   Comment.belongsTo(Post, {
     foreignKey: "post_id",
   });

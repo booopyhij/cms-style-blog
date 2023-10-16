@@ -4,11 +4,12 @@ const bcrypt = require("bcrypt");
 
 //define users model
 class User extends Model {
+    // checks hashed password
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
-//intialize model
+// user model
 User.init(
   {
     id: {

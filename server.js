@@ -1,3 +1,4 @@
+// constants that pull all required packages and files into the server file
 const path = require("path");
 const express = require("express");
 const session = require("express-session");
@@ -10,7 +11,7 @@ const helpers = require("./utils/helpers");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+// creates a session for login authentication
 const sesh = {
   secret: process.env.SECRET,
   cookie: {
@@ -30,10 +31,10 @@ const sesh = {
 app.use(session(sesh));
 
 const hbs = exphbs.create({ helpers });
-
+// use handlebars 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-
+// boiler plate code
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));

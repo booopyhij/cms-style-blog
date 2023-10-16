@@ -5,3 +5,4 @@ module.exports = {
       ).getDate()}/${new Date(date).getFullYear()}`;
     },
   };
+  // function to find the date. reusable function, but in this case is used for time posts/comments are created.

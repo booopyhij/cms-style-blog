@@ -1,9 +1,12 @@
 <div class="comments">
+    {{!-- for each loop --}}
     {{#each this}}
     <div>
+        {{!-- gets username and date it post or comment was created  --}}
         {{user.username}} on {{format_date created_at}}
     </div>
     <div class="content">
+        {{!-- comment content --}}
         {{comment_content}}
     </div>
     {{/each}}

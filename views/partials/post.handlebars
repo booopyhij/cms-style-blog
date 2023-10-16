@@ -1,15 +1,18 @@
 <div>
     <header>
         <div><p>
+            {{!-- post id = title --}}
             <a href="/post/{{id}}">{{title}}</a></p>
         </div>
     </header>
 
     <div>
+        {{!-- the content of the post --}}
         <div>{{post_content}}</div>
     
     </div>
     <div>
+        {{!-- getting the username date a post was created at and the comment created by the user or other users --}}
         <b>{{user.username}}</b> |{{format_date created_at}}| <a href="/post/{{id}}"> {{comment.length}}</a>
     </div>
 </div>

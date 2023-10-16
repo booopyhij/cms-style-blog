@@ -1,10 +1,11 @@
+// functions for handling login
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
     //collecting username and password from login screen
     const username = document.querySelector("#user-login").value.trim();
     const password = document.querySelector("#password-login").value.trim();
-  
+  // post request for login user data
     if (username && password) {
       const response = await fetch("/api/users/login", {
         method: "POST",
