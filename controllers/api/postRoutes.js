@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Post, User, Comment } = require("../../models");
 const sequelize = require("../../config/connection");
 const withAuth = require("../../utils/auth");
-const { post } = require("../dashboardRoutes");
+
 
 //get all posts by user
 router.get("/", withAuth, async (req, res) => {
@@ -29,6 +29,7 @@ router.get("/", withAuth, async (req, res) => {
     res.json(postData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
@@ -60,6 +61,7 @@ router.get("/:id", async (req, res) => {
     res.json(postData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
@@ -75,6 +77,7 @@ router.post("/", withAuth, async (req, res) => {
     res.json(postData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
@@ -96,9 +99,10 @@ router.put("/:id", withAuth, async (req, res) => {
       return;
     }
 
-    res.json({ message: "Post updated successfully!" });
+    res.json({ message: "Post updated!" });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
@@ -112,13 +116,14 @@ router.delete("/:id", withAuth, async (req, res) => {
     if (!postData) {
       res
         .status(404)
-        .json({ message: "Could not delete post or post not found." });
+        .json({ message: "Could not delete post." });
       return;
     }
 
-    res.json({ message: "Post successfully deleted!" });
+    res.json({ message: "Post deleted!" });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 

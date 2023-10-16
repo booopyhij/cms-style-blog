@@ -40,6 +40,7 @@ router.get("/", withAuth, async (req, res) => {
     //catch error and return status 500
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
@@ -82,6 +83,7 @@ router.get("edit/:Id", withAuth, async (req, res) => {
     res.render("editpost", { post, logged_in: true });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
@@ -97,6 +99,7 @@ router.post("/", withAuth, async (req, res) => {
     res.json(postData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
